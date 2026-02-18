@@ -8,25 +8,39 @@
 </head>
 <body>
   <main class="slide" aria-live="polite">
-    <header class="slide-header">
-      <p class="eyebrow">Slide 1</p>
-      <h1>Iterative & Incremental Approach for a DDQ Assistant</h1>
-      <p class="subtitle">One entity appears at a time to keep the narrative focused.</p>
-    </header>
+    <h1 class="reveal" data-step="1">What’s happening today?</h1>
 
-    <section class="stage" id="entity-stage">
-      <p class="entity-index" id="entity-index"></p>
-      <h2 class="entity-name" id="entity-name"></h2>
-      <p class="entity-description" id="entity-description"></p>
+    <section class="flow" aria-label="Drift delay loops sequence">
+      <article class="flow-item reveal" data-step="2">
+        <div class="icon" aria-hidden="true">⛵</div>
+        <p>Drift</p>
+      </article>
+
+      <div class="connector reveal" data-step="3" aria-hidden="true">→</div>
+
+      <article class="flow-item reveal" data-step="4">
+        <div class="icon" aria-hidden="true">⏳</div>
+        <p>Delay</p>
+      </article>
+
+      <div class="connector reveal" data-step="5" aria-hidden="true">→</div>
+
+      <article class="flow-item reveal" data-step="6">
+        <div class="icon" aria-hidden="true">↻</div>
+        <p>Loops</p>
+      </article>
     </section>
 
-    <nav class="controls" aria-label="Slide controls">
+    <section class="message">
+      <p class="reveal" data-step="7">We spend more time aligning than delivering—and users only understand late.</p>
+      <p class="reveal" data-step="8">This is not a people problem. <strong>It is a sequencing problem.</strong></p>
+    </section>
+
+    <footer class="controls" aria-label="Slide controls">
       <button type="button" id="previous">Previous</button>
       <button type="button" id="next">Next</button>
-      <p class="hint">Tip: <kbd>→</kbd> forward, <kbd>←</kbd> backward, or click the slide.</p>
-    </nav>
-
-    <ol class="progress" id="progress" aria-label="Entity progress"></ol>
+      <p class="hint">Use <kbd>→</kbd> to reveal next and <kbd>←</kbd> to go back.</p>
+    </footer>
   </main>
 
   <script src="script.js"></script>
