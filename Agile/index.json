@@ -1,0 +1,9 @@
+{
+  "presentation": "Agile",
+  "slides": [
+    {
+      "folder": "slide-01",
+      "index": "index.json"
+    }
+  ]
+}

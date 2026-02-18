@@ -1,6 +1,16 @@
 # DDQ Assistant Slides Prototype
 
-This repository contains a code-based first slide for a short presentation on an iterative incremental approach to building an assistant for due diligence questionnaires.
+This repository now uses a presentation-folder architecture so each deck can be managed as modular slide subfolders.
+
+## Architecture
+
+- `Agile/` is the presentation folder.
+- `Agile/index.json` defines the ordered sequence of slides.
+- Each slide lives in its own subfolder (for example, `Agile/slide-01/`).
+- Each slide subfolder includes an `index.json` file that defines content and interaction reveal order.
+- Slide-specific assets can be stored alongside that slide's `index.json`.
+
+The root `script.js` fetches the presentation index, then fetches each slide's `index.json` from its subfolder.
 
 ## Run locally
 
@@ -18,7 +28,7 @@ Tip: press `F11` (or your browser fullscreen shortcut) for full presentation mod
 
 You can open `index.html` directly in your browser, though using a local server is recommended.
 
-## Slide 1 interaction
+## Slide interaction
 
 - Elements reveal one by one with fade-in transitions.
 - Use **Right Arrow** to move forward through reveals.

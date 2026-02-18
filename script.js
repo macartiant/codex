@@ -1,33 +1,126 @@
-const revealItems = Array.from(document.querySelectorAll(".reveal"));
+const PRESENTATION_FOLDER = "Agile";
+
+const deckName = document.getElementById("deck-name");
+const slidePosition = document.getElementById("slide-position");
+const slideContent = document.getElementById("slide-content");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
-const maxStep = Math.max(...revealItems.map((item) => Number(item.dataset.step)));
 
+let presentationConfig;
+let activeSlideConfig;
+let revealOrder = [];
+let revealMap = new Map();
 let currentStep = 0;
 
-function renderStep() {
-  revealItems.forEach((item) => {
-    const itemStep = Number(item.dataset.step);
-    const shouldShow = itemStep <= currentStep;
-    item.classList.toggle("visible", shouldShow);
+function buildFlowItem(item, index) {
+  const wrapper = document.createElement("article");
+  wrapper.className = "flow-item";
+
+  const icon = document.createElement("div");
+  icon.className = "icon";
+  icon.textContent = item.icon;
+  icon.setAttribute("aria-hidden", "true");
+
+  const label = document.createElement("p");
+  label.textContent = item.label;
+
+  wrapper.append(icon, label);
+  revealMap.set(item.id, wrapper);
+
+  return wrapper;
+}
+
+function buildConnector(symbol, index) {
+  const connector = document.createElement("div");
+  connector.className = "connector";
+  connector.textContent = symbol;
+  connector.setAttribute("aria-hidden", "true");
+  revealMap.set(`connector-${index + 1}`, connector);
+
+  return connector;
+}
+
+function setStep(step) {
+  currentStep = Math.min(Math.max(step, 0), revealOrder.length);
+
+  revealMap.forEach((element) => {
+    element.classList.remove("visible");
   });
 
+  for (let index = 0; index < currentStep; index += 1) {
+    const key = revealOrder[index];
+    const element = revealMap.get(key);
+    if (element) {
+      element.classList.add("visible");
+    }
+  }
+
   previousButton.disabled = currentStep === 0;
-  nextButton.disabled = currentStep === maxStep;
+  nextButton.disabled = currentStep === revealOrder.length;
+}
+
+function renderSlide() {
+  revealMap = new Map();
+  revealOrder = activeSlideConfig.interactions.map((entry) => entry.reveal);
+
+  slideContent.innerHTML = "";
+
+  const title = document.createElement("h1");
+  title.textContent = activeSlideConfig.title;
+  revealMap.set("headline", title);
+
+  const flow = document.createElement("section");
+  flow.className = "flow";
+  flow.setAttribute("aria-label", "Slide sequence");
+
+  activeSlideConfig.flow.forEach((item, index) => {
+    flow.append(buildFlowItem(item, index));
+
+    if (index < activeSlideConfig.connectors.length) {
+      flow.append(buildConnector(activeSlideConfig.connectors[index], index));
+    }
+  });
+
+  const messageSection = document.createElement("section");
+  messageSection.className = "message";
+
+  activeSlideConfig.messages.forEach((text, index) => {
+    const message = document.createElement("p");
+
+    if (index === 1) {
+      message.innerHTML = text.replace("It is a sequencing problem.", "<strong>It is a sequencing problem.</strong>");
+    } else {
+      message.textContent = text;
+    }
+
+    revealMap.set(`message-${index + 1}`, message);
+    messageSection.append(message);
+  });
+
+  slideContent.append(title, flow, messageSection);
+
+  slidePosition.textContent = `Slide 1 of ${presentationConfig.slides.length}`;
+  setStep(0);
+}
+
+async function loadPresentation() {
+  const presentationResponse = await fetch(`${PRESENTATION_FOLDER}/index.json`);
+  presentationConfig = await presentationResponse.json();
+  deckName.textContent = presentationConfig.presentation;
+
+  const firstSlide = presentationConfig.slides[0];
+  const slideResponse = await fetch(`${PRESENTATION_FOLDER}/${firstSlide.folder}/${firstSlide.index}`);
+  activeSlideConfig = await slideResponse.json();
+
+  renderSlide();
 }
 
 function goForward() {
-  if (currentStep < maxStep) {
-    currentStep += 1;
-    renderStep();
-  }
+  setStep(currentStep + 1);
 }
 
 function goBackward() {
-  if (currentStep > 0) {
-    currentStep -= 1;
-    renderStep();
-  }
+  setStep(currentStep - 1);
 }
 
 nextButton.addEventListener("click", goForward);
@@ -45,4 +138,4 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-renderStep();
+loadPresentation();

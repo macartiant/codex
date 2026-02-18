@@ -1,0 +1,24 @@
+{
+  "id": "slide-01",
+  "title": "What’s happening today?",
+  "flow": [
+    { "id": "drift", "icon": "⛵", "label": "Drift" },
+    { "id": "delay", "icon": "⏳", "label": "Delay" },
+    { "id": "loops", "icon": "↻", "label": "Loops" }
+  ],
+  "connectors": ["→", "→"],
+  "messages": [
+    "We spend more time aligning than delivering—and users only understand late.",
+    "This is not a people problem. It is a sequencing problem."
+  ],
+  "interactions": [
+    { "reveal": "headline" },
+    { "reveal": "drift" },
+    { "reveal": "connector-1" },
+    { "reveal": "delay" },
+    { "reveal": "connector-2" },
+    { "reveal": "loops" },
+    { "reveal": "message-1" },
+    { "reveal": "message-2" }
+  ]
+}

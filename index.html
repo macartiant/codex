@@ -3,38 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iterative & Incremental DDQ Assistant — Slide 1</title>
+  <title>Agile Presentation Runner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="slide" aria-live="polite">
-    <h1 class="reveal" data-step="1">What’s happening today?</h1>
+    <header class="topbar">
+      <p class="deck-name" id="deck-name"></p>
+      <p class="slide-position" id="slide-position"></p>
+    </header>
 
-    <section class="flow" aria-label="Drift delay loops sequence">
-      <article class="flow-item reveal" data-step="2">
-        <div class="icon" aria-hidden="true">⛵</div>
-        <p>Drift</p>
-      </article>
-
-      <div class="connector reveal" data-step="3" aria-hidden="true">→</div>
-
-      <article class="flow-item reveal" data-step="4">
-        <div class="icon" aria-hidden="true">⏳</div>
-        <p>Delay</p>
-      </article>
-
-      <div class="connector reveal" data-step="5" aria-hidden="true">→</div>
-
-      <article class="flow-item reveal" data-step="6">
-        <div class="icon" aria-hidden="true">↻</div>
-        <p>Loops</p>
-      </article>
-    </section>
-
-    <section class="message">
-      <p class="reveal" data-step="7">We spend more time aligning than delivering—and users only understand late.</p>
-      <p class="reveal" data-step="8">This is not a people problem. <strong>It is a sequencing problem.</strong></p>
-    </section>
+    <section id="slide-content" class="slide-content"></section>
 
     <footer class="controls" aria-label="Slide controls">
       <button type="button" id="previous">Previous</button>
