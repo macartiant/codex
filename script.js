@@ -1,18 +1,12 @@
 const PRESENTATION_FOLDER = "Agile";
-
-const deckName = document.getElementById("deck-name");
-const slidePosition = document.getElementById("slide-position");
 const slideContent = document.getElementById("slide-content");
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
 
-let presentationConfig;
 let activeSlideConfig;
 let revealOrder = [];
 let revealMap = new Map();
 let currentStep = 0;
 
-function buildFlowItem(item, index) {
+function buildFlowItem(item) {
   const wrapper = document.createElement("article");
   wrapper.className = "flow-item";
 
@@ -54,15 +48,11 @@ function setStep(step) {
       element.classList.add("visible");
     }
   }
-
-  previousButton.disabled = currentStep === 0;
-  nextButton.disabled = currentStep === revealOrder.length;
 }
 
 function renderSlide() {
   revealMap = new Map();
   revealOrder = activeSlideConfig.interactions.map((entry) => entry.reveal);
-
   slideContent.innerHTML = "";
 
   const title = document.createElement("h1");
@@ -74,7 +64,7 @@ function renderSlide() {
   flow.setAttribute("aria-label", "Slide sequence");
 
   activeSlideConfig.flow.forEach((item, index) => {
-    flow.append(buildFlowItem(item, index));
+    flow.append(buildFlowItem(item));
 
     if (index < activeSlideConfig.connectors.length) {
       flow.append(buildConnector(activeSlideConfig.connectors[index], index));
@@ -98,15 +88,12 @@ function renderSlide() {
   });
 
   slideContent.append(title, flow, messageSection);
-
-  slidePosition.textContent = `Slide 1 of ${presentationConfig.slides.length}`;
   setStep(0);
 }
 
 async function loadPresentation() {
   const presentationResponse = await fetch(`${PRESENTATION_FOLDER}/index.json`);
-  presentationConfig = await presentationResponse.json();
-  deckName.textContent = presentationConfig.presentation;
+  const presentationConfig = await presentationResponse.json();
 
   const firstSlide = presentationConfig.slides[0];
   const slideResponse = await fetch(`${PRESENTATION_FOLDER}/${firstSlide.folder}/${firstSlide.index}`);
@@ -122,9 +109,6 @@ function goForward() {
 function goBackward() {
   setStep(currentStep - 1);
 }
-
-nextButton.addEventListener("click", goForward);
-previousButton.addEventListener("click", goBackward);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") {

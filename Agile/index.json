@@ -2,7 +2,7 @@
   "presentation": "Agile",
   "slides": [
     {
-      "folder": "slide-01",
+      "folder": "drift-delay-loops",
       "index": "index.json"
     }
   ]

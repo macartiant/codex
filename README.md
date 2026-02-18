@@ -6,7 +6,7 @@ This repository now uses a presentation-folder architecture so each deck can be 
 
 - `Agile/` is the presentation folder.
 - `Agile/index.json` defines the ordered sequence of slides.
-- Each slide lives in its own subfolder (for example, `Agile/slide-01/`).
+- Each slide lives in its own named subfolder (for example, `Agile/drift-delay-loops/`) without numeric prefixes.
 - Each slide subfolder includes an `index.json` file that defines content and interaction reveal order.
 - Slide-specific assets can be stored alongside that slide's `index.json`.
 
@@ -33,4 +33,3 @@ You can open `index.html` directly in your browser, though using a local server 
 - Elements reveal one by one with fade-in transitions.
 - Use **Right Arrow** to move forward through reveals.
 - Use **Left Arrow** to move backward.
-- You can also use **Next/Previous** buttons.
