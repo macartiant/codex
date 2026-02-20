@@ -12,6 +12,10 @@
     {
       "folder": "waterfall-vs-iterative",
       "index": "index.json"
+    },
+    {
+      "folder": "example",
+      "index": "index.json"
     }
   ]
 }

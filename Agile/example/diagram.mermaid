@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant DF as Data fetching
+    participant DG as Data grouping
+    participant GTG as Ground truth generation
+    participant Review as Data Review and validation
+    participant DQ as Data querying
+
+    DF->>DF: Collect raw files & Q/A
+    DF->>DG: 
+    DG->>DG: Group similar data
+    DG->>GTG: 
+    GTG->>GTG: Generate LLM-friendly reference
+    GTG->>Review: 
+    Review->>Review: Review and validate
+    Review->>DQ: 
+    DQ->>DQ: Execute target queries

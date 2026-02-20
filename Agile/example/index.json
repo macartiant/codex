@@ -1,0 +1,15 @@
+{
+    "id": "slide-example",
+    "layout": "mermaid",
+    "title": "Example",
+    "mermaidFile": "diagram.mermaid",
+    "messages": [],
+    "interactions": [
+        {
+            "reveal": "headline"
+        },
+        {
+            "reveal": "mermaid"
+        }
+    ]
+}

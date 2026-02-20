@@ -5,6 +5,8 @@ let activeSlideConfig;
 let revealOrder = [];
 let revealMap = new Map();
 let currentStep = 0;
+let currentSlideIndex = 0;
+let presentationConfig;
 
 function buildFlowItem(item) {
   const wrapper = document.createElement("article");
@@ -103,6 +105,19 @@ function renderComparisonSlide() {
   return grid;
 }
 
+function renderMermaidSlide() {
+  const section = document.createElement("section");
+  section.className = "mermaid-container";
+  revealMap.set("mermaid", section);
+
+  const mermaidDiv = document.createElement("div");
+  mermaidDiv.className = "mermaid";
+  mermaidDiv.textContent = activeSlideConfig.mermaidCode;
+
+  section.append(mermaidDiv);
+  return section;
+}
+
 function renderSlide() {
   revealMap = new Map();
   revealOrder = activeSlideConfig.interactions.map((entry) => entry.reveal);
@@ -115,6 +130,8 @@ function renderSlide() {
   let mainContent;
   if (activeSlideConfig.layout === "comparison") {
     mainContent = renderComparisonSlide();
+  } else if (activeSlideConfig.layout === "mermaid") {
+    mainContent = renderMermaidSlide();
   } else {
     mainContent = renderFlowSlide();
   }
@@ -136,6 +153,14 @@ function renderSlide() {
   });
 
   slideContent.append(title, mainContent, messageSection);
+
+  if (activeSlideConfig.layout === "mermaid") {
+    try {
+      mermaid.init(undefined, mainContent.querySelectorAll('.mermaid'));
+    } catch (e) {
+      console.error("Mermaid init failed", e);
+    }
+  }
   // Do not reset step here, let loadSlide handle it
 }
 
@@ -143,12 +168,22 @@ async function loadSlide(index, startAtEnd = false) {
   if (index < 0 || index >= presentationConfig.slides.length) return;
 
   currentSlideIndex = index;
+  sessionStorage.setItem(`${PRESENTATION_FOLDER}_currentSlideIndex`, index);
   const slideInfo = presentationConfig.slides[currentSlideIndex];
 
   try {
     const timestamp = new Date().getTime();
     const slideResponse = await fetch(`${PRESENTATION_FOLDER}/${slideInfo.folder}/${slideInfo.index}?t=${timestamp}`);
     activeSlideConfig = await slideResponse.json();
+
+    if (activeSlideConfig.mermaidFile) {
+      const mermaidResponse = await fetch(`${PRESENTATION_FOLDER}/${slideInfo.folder}/${activeSlideConfig.mermaidFile}?t=${timestamp}`);
+      if (mermaidResponse.ok) {
+        activeSlideConfig.mermaidCode = await mermaidResponse.text();
+      } else {
+        console.error(`Failed to load mermaid file: ${activeSlideConfig.mermaidFile}`);
+      }
+    }
 
     renderSlide();
 
@@ -170,7 +205,21 @@ async function loadPresentation() {
     if (!response.ok) throw new Error("Presentation not found");
 
     presentationConfig = await response.json();
-    await loadSlide(0);
+
+    let savedIndex = sessionStorage.getItem(`${PRESENTATION_FOLDER}_currentSlideIndex`);
+    let startAtEnd = false;
+    if (savedIndex !== null) {
+      savedIndex = parseInt(savedIndex, 10);
+      startAtEnd = true;
+      if (savedIndex < 0 || savedIndex >= presentationConfig.slides.length) {
+        savedIndex = 0;
+        startAtEnd = false;
+      }
+    } else {
+      savedIndex = 0;
+    }
+
+    await loadSlide(savedIndex, startAtEnd);
   } catch (error) {
     console.error(error);
     slideContent.innerHTML = `<h1>Presentation '${PRESENTATION_FOLDER}' not found</h1>`;
@@ -202,6 +251,11 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
     event.preventDefault();
     goBackward();
+  }
+
+  if (event.key === "Delete" || event.key === "Backspace") {
+    event.preventDefault();
+    setStep(0);
   }
 
   if (event.code === "Space" || event.key === " ") {

@@ -1,0 +1,24 @@
+{
+  "name": "codex",
+  "version": "1.0.0",
+  "description": "This repository now uses a presentation-folder architecture so each deck can be managed as modular slide subfolders.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macartiant/codex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macartiant/codex/issues"
+  },
+  "homepage": "https://github.com/macartiant/codex#readme",
+  "dependencies": {
+    "jsdom": "^28.1.0",
+    "mermaid": "^9.4.3"
+  }
+}

@@ -112,7 +112,8 @@ h1 {
 h1,
 .flow-item,
 .connector,
-.message p {
+.message p,
+.mermaid-container {
   opacity: 0;
   transform: translateY(14px);
   pointer-events: none;
@@ -121,7 +122,8 @@ h1,
 h1.visible,
 .flow-item.visible,
 .connector.visible,
-.message p.visible {
+.message p.visible,
+.mermaid-container.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -222,4 +224,41 @@ h1.visible,
   font-size: 1.5rem;
   width: 2rem;
   text-align: center;
+}
+
+/* Mermaid Layout */
+.mermaid-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.mermaid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mermaid svg {
+  max-width: 100% !important;
+  max-height: 65vh !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Add a white halo around diagram text to make it readable when lines cross behind */
+.mermaid .messageText,
+.mermaid .messageText tspan {
+  text-shadow:
+    -2px -2px 2px #ffffff,
+    2px -2px 2px #ffffff,
+    -2px 2px 2px #ffffff,
+    2px 2px 2px #ffffff,
+    -3px 0 2px #ffffff,
+    3px 0 2px #ffffff,
+    0 -3px 2px #ffffff,
+    0 3px 2px #ffffff;
 }

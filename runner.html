@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agile Presentation Runner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <main class="slide" aria-live="polite">
     <section id="slide-content" class="slide-content"></section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base', /* Use a base theme to inherit standard colors while allowing overrides */
+      themeVariables: {
+        fontFamily: 'Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+        fontSize: '16px',
+        primaryColor: '#ffffff',
+        primaryTextColor: '#212a33',
+        primaryBorderColor: '#56636f',
+        lineColor: '#b4bec8'
+      },
+      flowchart: {
+        htmlLabels: true /* Parse HTML tags correctly */
+      }
+    });
+  </script>
   <script src="script.js"></script>
 </body>
+
 </html>
