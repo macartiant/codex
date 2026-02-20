@@ -52,6 +52,42 @@ function setStep(step) {
       }
     });
   });
+
+}
+
+function buildMermaidRevealGroups(svg) {
+  const messageGroups = Array.from(svg.querySelectorAll("g.message"));
+  if (messageGroups.length) return messageGroups;
+
+  const lineGroups = Array.from(svg.querySelectorAll(".messageLine0, .messageLine1, .messageLine2, [id^='msgLine']"));
+  const textGroups = Array.from(svg.querySelectorAll(".messageText, [id^='messageText']"));
+  const pairCount = Math.max(lineGroups.length, textGroups.length);
+
+  return Array.from({ length: pairCount }, (_, index) => [lineGroups[index], textGroups[index]].filter(Boolean)).filter((group) => group.length);
+}
+
+function prepareMermaidSequenceReveal(mainContent) {
+  if (activeSlideConfig.mermaidRevealMode !== "sequence") return;
+
+  const svg = mainContent.querySelector("svg");
+  if (!svg) return;
+
+  const revealGroups = buildMermaidRevealGroups(svg);
+  if (!revealGroups.length) return;
+
+  revealGroups.forEach((group) => {
+    const elements = Array.isArray(group) ? group : [group];
+    elements.forEach((element) => element.classList.add("mermaid-fragment"));
+  });
+
+  revealOrder.forEach((key) => {
+    const match = key.match(/^mermaid-step-(\d+)$/);
+    if (!match) return;
+
+    const stepIndex = Math.max(parseInt(match[1], 10) - 1, 0);
+    const visibleGroups = revealGroups.slice(0, stepIndex + 1).flatMap((group) => Array.isArray(group) ? group : [group]);
+    revealMap.set(key, visibleGroups);
+  });
 }
 
 function renderFlowSlide() {
@@ -118,7 +154,7 @@ function renderMermaidSlide() {
   return section;
 }
 
-function renderSlide() {
+async function renderSlide() {
   revealMap = new Map();
   revealOrder = activeSlideConfig.interactions.map((entry) => entry.reveal);
   slideContent.innerHTML = "";
@@ -156,7 +192,14 @@ function renderSlide() {
 
   if (activeSlideConfig.layout === "mermaid") {
     try {
-      mermaid.init(undefined, mainContent.querySelectorAll('.mermaid'));
+      const nodes = mainContent.querySelectorAll('.mermaid');
+      if (typeof mermaid.run === "function") {
+        await mermaid.run({ nodes });
+      } else {
+        mermaid.init(undefined, nodes);
+      }
+      prepareMermaidSequenceReveal(mainContent);
+      setStep(currentStep);
     } catch (e) {
       console.error("Mermaid init failed", e);
     }
@@ -185,7 +228,7 @@ async function loadSlide(index, startAtEnd = false) {
       }
     }
 
-    renderSlide();
+    await renderSlide();
 
     if (startAtEnd) {
       setStep(revealOrder.length);

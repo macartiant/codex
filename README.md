@@ -33,3 +33,13 @@ You can open `index.html` directly in your browser, though using a local server 
 - Elements reveal one by one with fade-in transitions.
 - Use **Right Arrow** to move forward through reveals.
 - Use **Left Arrow** to move backward.
+
+## Stable step-by-step Mermaid sequence diagrams
+
+To reveal a Mermaid sequence diagram one step at a time **without changing overlaps or layout**, keep a single complete `mermaidFile` and set `"mermaidRevealMode": "sequence"` in the slide config.
+
+- The runner renders the full Mermaid sequence once (final geometry only).
+- It then progressively reveals existing message groups in order via reveal keys like `mermaid-step-1`, `mermaid-step-2`, etc.
+- Because the SVG is generated once from the final diagram, overlaps and spacing stay stable as steps are revealed.
+
+See `Agile/example/index.json` and `Agile/example/diagram.mermaid` for a working example.
