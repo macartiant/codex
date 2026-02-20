@@ -1,0 +1,51 @@
+{
+  "id": "slide-02",
+  "title": "How to do it right",
+  "flow": [
+    {
+      "id": "scope",
+      "icon": "📝",
+      "label": "Scope is written,\nand signed off"
+    },
+    {
+      "id": "end-to-end",
+      "icon": "⚙️",
+      "label": "End-to-end"
+    },
+    {
+      "id": "manual",
+      "icon": "📋",
+      "label": "Start shamelessly\nmanual"
+    }
+  ],
+  "connectors": [
+    "→",
+    "→"
+  ],
+  "messages": [
+    "Because the point is learning, not elegance."
+  ],
+  "interactions": [
+    {
+      "reveal": "headline"
+    },
+    {
+      "reveal": "scope"
+    },
+    {
+      "reveal": "connector-1"
+    },
+    {
+      "reveal": "end-to-end"
+    },
+    {
+      "reveal": "connector-2"
+    },
+    {
+      "reveal": "manual"
+    },
+    {
+      "reveal": "message-1"
+    }
+  ]
+}

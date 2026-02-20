@@ -4,6 +4,14 @@
     {
       "folder": "drift-delay-loops",
       "index": "index.json"
+    },
+    {
+      "folder": "scope-end-manual",
+      "index": "index.json"
+    },
+    {
+      "folder": "waterfall-vs-iterative",
+      "index": "index.json"
     }
   ]
 }

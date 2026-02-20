@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agile Presentation Runner</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <main class="slide" aria-live="polite">
-    <section id="slide-content" class="slide-content"></section>
-  </main>
 
-  <script src="script.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Deck</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #f4f6f8;
+      color: #212a33;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    a {
+      display: block;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+
+    a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Available Presentations</h1>
+  <ul id="presentation-list">
+    <!-- List will be populated here -->
+    <li><a href="runner.html?p=Agile">Agile Presentation</a></li>
+  </ul>
 </body>
+
 </html>

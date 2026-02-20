@@ -1,0 +1,100 @@
+{
+    "id": "slide-03",
+    "title": "Waterfall Thinking vs. Iterative Thinking.",
+    "layout": "comparison",
+    "headers": [
+        {
+            "text": "Upfront Design",
+            "icon": "📝",
+            "class": "waterfall-header"
+        },
+        {
+            "text": "Iterative Delivery",
+            "icon": "🔄",
+            "class": "iterative-header"
+        }
+    ],
+    "rows": [
+        {
+            "left": {
+                "text": "Decide first",
+                "icon": "⬜"
+            },
+            "right": {
+                "text": "Learn first",
+                "icon": "✅"
+            }
+        },
+        {
+            "left": {
+                "text": "Deliver once",
+                "icon": "⬜"
+            },
+            "right": {
+                "text": "Deliver multiple times",
+                "icon": "✅"
+            }
+        },
+        {
+            "left": {
+                "text": "Perfect",
+                "icon": "⬜"
+            },
+            "right": {
+                "text": "Progress",
+                "icon": "✅"
+            }
+        },
+        {
+            "left": {
+                "text": "Aim for completeness",
+                "icon": "🎯"
+            },
+            "right": {
+                "text": "Aim for learning",
+                "icon": "💡"
+            }
+        }
+    ],
+    "messages": [
+        "We are not lowering standards. We are shifting when we learn."
+    ],
+    "interactions": [
+        {
+            "reveal": "headline"
+        },
+        {
+            "reveal": "comparison-grid"
+        },
+        {
+            "reveal": "headers"
+        },
+        {
+            "reveal": "row-0-left"
+        },
+        {
+            "reveal": "row-0-right"
+        },
+        {
+            "reveal": "row-1-left"
+        },
+        {
+            "reveal": "row-1-right"
+        },
+        {
+            "reveal": "row-2-left"
+        },
+        {
+            "reveal": "row-2-right"
+        },
+        {
+            "reveal": "row-3-left"
+        },
+        {
+            "reveal": "row-3-right"
+        },
+        {
+            "reveal": "message-1"
+        }
+    ]
+}
