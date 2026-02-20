@@ -1,15 +1,31 @@
 {
-    "id": "slide-example",
-    "layout": "mermaid",
-    "title": "Example",
-    "mermaidFile": "diagram.mermaid",
-    "messages": [],
-    "interactions": [
-        {
-            "reveal": "headline"
-        },
-        {
-            "reveal": "mermaid"
-        }
-    ]
+  "id": "slide-example",
+  "layout": "mermaid",
+  "title": "Example",
+  "messages": [],
+  "interactions": [
+    {
+      "reveal": "headline"
+    },
+    {
+      "reveal": "mermaid"
+    },
+    {
+      "reveal": "mermaid-step-1"
+    },
+    {
+      "reveal": "mermaid-step-2"
+    },
+    {
+      "reveal": "mermaid-step-3"
+    },
+    {
+      "reveal": "mermaid-step-4"
+    },
+    {
+      "reveal": "mermaid-step-5"
+    }
+  ],
+  "mermaidFile": "diagram.mermaid",
+  "mermaidRevealMode": "sequence"
 }

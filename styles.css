@@ -242,6 +242,15 @@ h1.visible,
   justify-content: center;
 }
 
+.mermaid-fragment {
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.mermaid-fragment.visible {
+  opacity: 1;
+}
+
 .mermaid svg {
   max-width: 100% !important;
   max-height: 65vh !important;
