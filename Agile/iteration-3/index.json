@@ -1,0 +1,19 @@
+{
+    "id": "slide-iteration-3",
+    "layout": "mermaid",
+    "title": "iteration 3",
+    "description": "Reaching full pipeline automation with Copilot for extraction and grouping, integration of internal LLM scripts, and a custom chatbot in Word/Excel for streamlined querying and automated validation.",
+    "mermaidFile": "diagram.mermaid",
+    "messages": [],
+    "interactions": [
+        {
+            "reveal": "headline"
+        },
+        {
+            "reveal": "description"
+        },
+        {
+            "reveal": "mermaid"
+        }
+    ]
+}

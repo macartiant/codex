@@ -127,6 +127,14 @@ function renderSlide() {
   title.textContent = activeSlideConfig.title;
   revealMap.set("headline", title);
 
+  let description;
+  if (activeSlideConfig.description) {
+    description = document.createElement("section");
+    description.className = "description";
+    description.textContent = activeSlideConfig.description;
+    revealMap.set("description", description);
+  }
+
   let mainContent;
   if (activeSlideConfig.layout === "comparison") {
     mainContent = renderComparisonSlide();
@@ -152,7 +160,11 @@ function renderSlide() {
     messageSection.append(message);
   });
 
-  slideContent.append(title, mainContent, messageSection);
+  if (description) {
+    slideContent.append(title, description, mainContent, messageSection);
+  } else {
+    slideContent.append(title, mainContent, messageSection);
+  }
 
   if (activeSlideConfig.layout === "mermaid") {
     try {
@@ -161,7 +173,6 @@ function renderSlide() {
       console.error("Mermaid init failed", e);
     }
   }
-  // Do not reset step here, let loadSlide handle it
 }
 
 async function loadSlide(index, startAtEnd = false) {

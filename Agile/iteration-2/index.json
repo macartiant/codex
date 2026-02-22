@@ -1,0 +1,19 @@
+{
+    "id": "slide-iteration-2",
+    "layout": "mermaid",
+    "title": "iteration 2",
+    "description": "Expanding the dataset with public DDQs and synthetic answers. We introduce Microsoft Copilot for querying and move toward a semi-manual review process to increase scale and velocity.",
+    "mermaidFile": "diagram.mermaid",
+    "messages": [],
+    "interactions": [
+        {
+            "reveal": "headline"
+        },
+        {
+            "reveal": "description"
+        },
+        {
+            "reveal": "mermaid"
+        }
+    ]
+}

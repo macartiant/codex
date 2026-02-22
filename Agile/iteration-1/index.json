@@ -1,0 +1,19 @@
+{
+    "id": "slide-iteration-1",
+    "layout": "mermaid",
+    "title": "iteration 1",
+    "description": "Initial experimentation using ChatGPT to generate synthetic Q/A data and assist in grouping. This manual review phase focuses on validating the foundational pipeline logic with minimal overhead.",
+    "mermaidFile": "diagram.mermaid",
+    "messages": [],
+    "interactions": [
+        {
+            "reveal": "headline"
+        },
+        {
+            "reveal": "description"
+        },
+        {
+            "reveal": "mermaid"
+        }
+    ]
+}

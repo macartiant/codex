@@ -5,15 +5,15 @@ sequenceDiagram
     participant Review as Data Review & Validation
     participant DQ as Data Querying
 
-    DF->>DF: Collect raw files & Q/A pairs
+    DF->>DF: Use Copilot to extract Q/A from DDQs
     DF->>DG: Pass raw Q/A data
-    DG->>DG: Group similar Q/A
+    DG->>DG: Group similar data using MS Copilot
     DG->>GTG: Pass grouped data
-    GTG->>GTG: Generate LLM-friendly reference
+    GTG->>GTG: Generate LLM-friendly reference via internal LLM script
     GTG->>Review: Pass ground truth
-    Review->>Review: Review and validate
+    Review->>Review: Automated/internal review and validation
     loop If issues found
         Review-->>DF: Feedback for re-fetch/group/gen
     end
     Review->>DQ: Pass validated ground truth
-    DQ->>DQ: Execute target queries
+    DQ->>DQ: Access and query via custom chatbot in Word/Excel

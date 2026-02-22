@@ -16,6 +16,18 @@
     {
       "folder": "example",
       "index": "index.json"
+    },
+    {
+      "folder": "iteration-1",
+      "index": "index.json"
+    },
+    {
+      "folder": "iteration-2",
+      "index": "index.json"
+    },
+    {
+      "folder": "iteration-3",
+      "index": "index.json"
     }
   ]
 }

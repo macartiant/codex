@@ -5,15 +5,15 @@ sequenceDiagram
     participant Review as Data Review & Validation
     participant DQ as Data Querying
 
-    DF->>DF: Collect raw files & Q/A pairs
-    DF->>DG: Pass raw Q/A data
-    DG->>DG: Group similar Q/A
+    DF->>DF: Fetch public DDQs + generate synthetic answers via ChatGPT
+    DF->>DG: Pass mixed Q/A data
+    DG->>DG: Group similar data via ChatGPT
     DG->>GTG: Pass grouped data
-    GTG->>GTG: Generate LLM-friendly reference
+    GTG->>GTG: Generate LLM-friendly reference via ChatGPT
     GTG->>Review: Pass ground truth
-    Review->>Review: Review and validate
+    Review->>Review: Review and validate (semi-manual)
     loop If issues found
         Review-->>DF: Feedback for re-fetch/group/gen
     end
     Review->>DQ: Pass validated ground truth
-    DQ->>DQ: Execute target queries
+    DQ->>DQ: Query using Microsoft Copilot

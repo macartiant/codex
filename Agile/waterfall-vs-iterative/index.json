@@ -1,6 +1,7 @@
 {
     "id": "slide-03",
     "title": "Waterfall Thinking vs. Iterative Thinking.",
+    "description": "Comparing the traditional shift-heavy design approach with a modern iterative model. The goal is to move from 'decide once' to 'continuous learning,' prioritizing progress over upfront perfection.",
     "layout": "comparison",
     "headers": [
         {
@@ -62,6 +63,9 @@
     "interactions": [
         {
             "reveal": "headline"
+        },
+        {
+            "reveal": "description"
         },
         {
             "reveal": "comparison-grid"

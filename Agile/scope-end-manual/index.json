@@ -1,6 +1,7 @@
 {
   "id": "slide-02",
   "title": "How to do it right",
+  "description": "A different path to delivery: defining clear scope, building the full pipeline end-to-end immediately, and starting with a manual process to maximize learning before investing in automation.",
   "flow": [
     {
       "id": "scope",
@@ -28,6 +29,9 @@
   "interactions": [
     {
       "reveal": "headline"
+    },
+    {
+      "reveal": "description"
     },
     {
       "reveal": "scope"

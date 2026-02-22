@@ -1,24 +1,59 @@
 {
   "id": "slide-01",
   "title": "What’s happening today?",
+  "description": "Identifying the systemic friction in our current process: Drift (loss of alignment), Delay (wait times), and Loops (rework). These patterns often stem from sequencing issues rather than individual performance.",
   "flow": [
-    { "id": "drift", "icon": "⛵", "label": "Drift" },
-    { "id": "delay", "icon": "⏳", "label": "Delay" },
-    { "id": "loops", "icon": "↻", "label": "Loops" }
+    {
+      "id": "drift",
+      "icon": "⛵",
+      "label": "Drift"
+    },
+    {
+      "id": "delay",
+      "icon": "⏳",
+      "label": "Delay"
+    },
+    {
+      "id": "loops",
+      "icon": "↻",
+      "label": "Loops"
+    }
   ],
-  "connectors": ["→", "→"],
+  "connectors": [
+    "→",
+    "→"
+  ],
   "messages": [
     "We spend more time aligning than delivering—and users only understand late.",
     "This is not a people problem. It is a sequencing problem."
   ],
   "interactions": [
-    { "reveal": "headline" },
-    { "reveal": "drift" },
-    { "reveal": "connector-1" },
-    { "reveal": "delay" },
-    { "reveal": "connector-2" },
-    { "reveal": "loops" },
-    { "reveal": "message-1" },
-    { "reveal": "message-2" }
+    {
+      "reveal": "headline"
+    },
+    {
+      "reveal": "description"
+    },
+    {
+      "reveal": "drift"
+    },
+    {
+      "reveal": "connector-1"
+    },
+    {
+      "reveal": "delay"
+    },
+    {
+      "reveal": "connector-2"
+    },
+    {
+      "reveal": "loops"
+    },
+    {
+      "reveal": "message-1"
+    },
+    {
+      "reveal": "message-2"
+    }
   ]
 }
