@@ -1,8 +1,8 @@
 {
-    "id": "slide-iteration-1",
+    "id": "Overall-architecture",
     "layout": "mermaid",
-    "title": "First iteration",
-    "description": "",
+    "title": "Overall-architecture",
+    "description": "Relying on the Microsoft stack: Microsoft 365, Power Automate, and Copilot",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [

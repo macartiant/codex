@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant DF as Data Fetching
+    participant DG as Data Grouping
+    participant GTG as Ground Truth Generation
+    participant Review as Data Review & Validation
+
+    DF->>DF: extract Q/A from DDQs
+    DF->>DG: Pass raw Q/A data
+    DG->>DG: Group similar data
+    DG->>GTG: Pass grouped data
+    GTG->>GTG: Generate LLM-friendly reference
+    GTG->>Review: Pass ground truth
+    Review->>Review: Automated/internal review and validation
+    loop If issues found
+        Review-->>DF: Feedback for re-fetch/group/gen
+    end

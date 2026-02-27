@@ -1,0 +1,11 @@
+sequenceDiagram
+  autonumber
+  actor U as User
+  participant C as Microsoft Copilot
+  participant KB as Excel/SharePoint list <br> Knowledge Base
+
+  U->>C: Ask question (any phrasing)
+  C->>KB: Search / retrieve relevant content
+  KB-->>C: Provide retrieved context + links
+  C-->>U: Answer + source reference (SharePoint link)
+

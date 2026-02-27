@@ -43,6 +43,7 @@ body {
   height: 100%;
   max-height: 100%;
   display: grid;
+  grid-template-columns: 100%;
   align-content: center;
   justify-items: center;
   gap: clamp(1rem, 2.5vh, 2.2rem);
@@ -257,9 +258,7 @@ h1.visible,
 
 .mermaid svg {
   max-width: 100% !important;
-  max-height: 58vh !important;
-  width: auto !important;
-  height: auto !important;
+  max-height: 65vh !important;
 }
 
 /* Add a white halo around diagram text to make it readable when lines cross behind */

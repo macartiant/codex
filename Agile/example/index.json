@@ -1,8 +1,8 @@
 {
     "id": "slide-example",
     "layout": "mermaid",
-    "title": "Hollistic approach",
-    "description": "The core components—data fetching, grouping, ground truth generation, and querying—form a logical pipeline. We'll make incremental, targeted improvements and execute the full pipeline end-to-end each time to control outputs.",
+    "title": "Overview",
+    "description": "",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [

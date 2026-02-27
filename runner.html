@@ -17,7 +17,7 @@
   <script>
     mermaid.initialize({
       startOnLoad: false,
-      theme: 'base', /* Use a base theme to inherit standard colors while allowing overrides */
+      theme: 'base',
       themeVariables: {
         fontFamily: 'Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
         fontSize: '16px',
@@ -27,7 +27,13 @@
         lineColor: '#b4bec8'
       },
       flowchart: {
-        htmlLabels: true /* Parse HTML tags correctly */
+        htmlLabels: true
+      },
+      gantt: {
+        fontSize: 16,
+        leftPadding: 300,
+        barHeight: 30,
+        gridLineStartPadding: 50
       }
     });
   </script>

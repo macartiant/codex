@@ -1,8 +1,8 @@
 {
-    "id": "slide-iteration-1",
+    "id": "slide-code-reveal",
     "layout": "mermaid",
-    "title": "First iteration",
-    "description": "",
+    "title": "Setup: Workflows configuration",
+    "description": "Create a SharePoint Site and PowerAutomate to ensure core workflows are running",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [

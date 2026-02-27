@@ -1,8 +1,8 @@
 {
-    "id": "slide-iteration-1",
+    "id": "slide-iteration-5",
     "layout": "mermaid",
-    "title": "First iteration",
-    "description": "",
+    "title": "Data Retrieval",
+    "description": "Levering built-in features to query the Knowledge base",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [

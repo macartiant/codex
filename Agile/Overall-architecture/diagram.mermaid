@@ -1,0 +1,39 @@
+flowchart LR
+  %% High-level architecture (Microsoft stack)
+
+  subgraph USERS[Users]
+    U[End Users]
+    DO[Data Owners]
+  end
+
+  subgraph M365[Microsoft 365]
+    subgraph SP[SharePoint]
+      KB[(Knowledge Base<br>Excel files / SharePoint lists)]
+      META[(Metadata / Register<br>Owner, ReviewDate, Status)]
+    end
+
+    subgraph PA[Power Automate]
+      F1[Flow 1<br>On create/modify<br>sync metadata]
+      F2[Flow 2<br>Scheduled reminders<br>review / update]
+      F3[Flow 3<br>Escalations<br>overdue items]
+    end
+
+    subgraph COP[Microsoft Copilot]
+      Q[User question<br>any phrasing]
+      RET[Retrieve relevant KB content]
+      ANS[Answer<br>with SharePoint links]
+    end
+  end
+
+  %% Governance / content lifecycle
+  DO -->|Update content| KB
+  KB --> F1
+  F1 --> META
+
+  META --> F2 -->|Notify| DO
+  META --> F3 -->|Warn| DO
+
+  %% Retrieval
+  U --> Q --> RET
+  RET --> KB
+  RET --> ANS --> U

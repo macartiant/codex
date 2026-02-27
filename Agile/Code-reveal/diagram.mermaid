@@ -1,0 +1,16 @@
+sequenceDiagram
+  autonumber
+  actor Admin
+  participant SP as SharePoint <br> Knowledge Base
+  participant PA as Power Automate
+  actor DO as Data Owner
+
+  Admin->>SP: Set up Knowledge Base site <br> (library + key metadata)
+  Admin->>PA: Configure automated workflows <br> (change trigger + scheduled review)
+
+  PA->>SP: Monitor content updates <br> and review dates
+  PA-->>DO: Send reminders <br> when review is required
+
+  DO->>SP: Update content
+  SP-->>PA: Trigger workflow
+  PA-->>DO: Confirm review status updated

@@ -1,8 +1,8 @@
 {
-    "id": "slide-iteration-1",
+    "id": "slide-iteration-6",
     "layout": "mermaid",
-    "title": "First iteration",
-    "description": "",
+    "title": "Setup: initial Ground truth creation",
+    "description": "One time initialization of the Ground truth (per domain)",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [

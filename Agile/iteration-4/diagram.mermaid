@@ -1,0 +1,18 @@
+sequenceDiagram
+  autonumber
+  actor DO as Data Owner / SME
+  participant PA as Power Automate
+  participant SP as SharePoint Site
+  participant KB as Excel/SharePoint list <br> Knowledge Base
+
+  PA->>SP: Monitor KB (schedule / trigger)
+  PA-->>DO: Reminder to review or update data
+  DO->>SP: Update Excel/SharePoint list content
+  SP->>KB: Save latest version
+  PA->>SP: Validate freshness / completeness
+
+  alt Outdated / missing info detected
+    PA-->>DO: Warning / escalation notification
+  else Up to date
+    PA-->>DO: Confirmation / no action needed
+  end

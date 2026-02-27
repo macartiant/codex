@@ -1,8 +1,8 @@
 {
-    "id": "slide-iteration-1",
+    "id": "slide-iteration-4",
     "layout": "mermaid",
-    "title": "First iteration",
-    "description": "",
+    "title": "Data Governance",
+    "description": "High level description on the controls to ensure data quality",
     "mermaidFile": "diagram.mermaid",
     "messages": [],
     "interactions": [
